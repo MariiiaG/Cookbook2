@@ -1,0 +1,36 @@
+{% extends "myapp/base.html" %}
+{% block content %}
+<div class="row text-start lh-2">
+    <h5>List of Recipes for editing</h5>
+</div>
+<div class="row">
+    <div class="col-2"></div>
+    <a href="{% url 'recipe_create' %}">Submit a new Recipe</a>
+    <div class="col-8">
+        <table class="table table-striped table-bordered text-start">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% if book %}
+                {% for recipe in recipe.all %}
+                    <tr>
+                        <td>{{ book.id }}</td>
+                        <td>{{ book.title }}</td>
+                        <td><a href="/recipe/update/{{recipe.id}}">Edit</a>
+                            <a href="/recipe/delete/{{book.id}}">Delete</a></td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <p>There are no recipes yet</p>
+            {% endif %}
+            </tbody>
+        </table>
+    </div>
+    <div class="col-2"></div>
+</div>
+{% endblock %}

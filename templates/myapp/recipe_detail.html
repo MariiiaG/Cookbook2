@@ -1,0 +1,33 @@
+{% extends "myapp/base.html" %}
+{% block content %}
+<div class="container text-start">
+    <div class="row my-2">
+        <h1>Recipe title - "{{ recipe.title }}"</h1>
+    </div>
+    <div class="row my-2">
+        <div><strong>Author:</strong>
+            {% for author in recipe.author.all %}
+            <a href="">{{ author.first_name }} {{author.last_name}}</a>
+            {% endfor %}
+        </div>
+        <img src="{{ recipe.photo.url }}" alt="photo" style="height:70px width:70px">
+        <a href="{{ recipe.photo.url }}" class="btn btn-primary" target="_blank"> Show photo</a>
+        <div class="row my-2">
+            <div class="col">
+                <p><strong>Cooking time:</strong> {{ recipe.cooking_time }} mins</p>
+            </div>
+        </div>
+        <div class="row my-2">
+            <p><strong>Description:</strong> {{ recipe.description }}</p>
+        </div>
+        <div class="row my-2">
+            <div class="col mx-2 bg-primary text-white">
+                <p><strong>Category:</strong> {{ recipe.category }}</p>
+            </div>
+            <div class="col mx-2 bg-primary text-white">
+                <p><strong>Cooking Method:</strong> {{ recipe.cooking_method }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
